@@ -1,0 +1,13 @@
+C# Classes and Methods Used
+File.CreateText() – Creates a new text file.
+StreamWriter – Writes data into a file.
+StreamReader – Reads data from a file.
+File.AppendText() – Adds new content to a file.
+File.Delete() – Deletes a file.
+File.Exists() – Checks if a file exists.
+MessageBox.Show() – Displays a message.
+Close() – Closes the application.
+Clear() – Clears the TextBox.
+System.IO – Provides file handling classes.
+Project Description
+This project is a File Handling Application developed using C# Windows Forms. It allows users to create, write, read, append, and delete text files. It also displays output messages and file content in a ListBox.
