@@ -1,0 +1,125 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace asseyment_file
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+
+            string path = txtFileName.Text + ".txt";
+
+            using (StreamWriter sw = File.CreateText(path))
+            {
+            }
+
+            lstOutput.Items.Add("File Created Successfully");
+
+
+        }
+
+        private void btnWrite_Click(object sender, EventArgs e)
+        {
+
+            string path = txtFileName.Text + ".txt";
+
+            using (StreamWriter sw = new StreamWriter(path))
+            {
+                sw.WriteLine(txtContent.Text);
+            }
+
+            lstOutput.Items.Add("File Written Successfully");
+        }
+
+        private void btnRead_Click(object sender, EventArgs e)
+        {
+
+            string path = txtFileName.Text + ".txt";
+
+            lstOutput.Items.Clear();
+
+            if (File.Exists(path))
+            {
+                using (StreamReader sr = File.OpenText(path))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        lstOutput.Items.Add(sr.ReadLine());
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("File is not found!");
+            }
+        }
+
+        private void btnAppend_Click(object sender, EventArgs e)
+        {
+
+            string path = txtFileName.Text + ".txt";
+
+            using (StreamWriter sw = File.AppendText(path))
+            {
+                sw.WriteLine(txtContent.Text);
+            }
+
+            lstOutput.Items.Add("File Appended Successfully");
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+
+          
+            string path = txtFileName.Text + ".txt";
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+                lstOutput.Items.Add("File Deleted Successfully");
+            }
+            else
+            {
+                MessageBox.Show("File Not Found");
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtContent.Clear();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+          
+            Close();
+        }
+    }
+    }
+    
+
+    
+    
+    
+    
+
